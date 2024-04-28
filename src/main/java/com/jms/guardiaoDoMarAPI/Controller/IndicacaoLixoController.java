@@ -13,6 +13,7 @@ import com.jms.guardiaoDoMarAPI.Model.IndicacaoLixoModel;
 import com.jms.guardiaoDoMarAPI.Response.ResponseModel;
 import com.jms.guardiaoDoMarAPI.Service.IndicacaoLixoService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "guardiaodomar/indicacaolixo")
 public class IndicacaoLixoController {

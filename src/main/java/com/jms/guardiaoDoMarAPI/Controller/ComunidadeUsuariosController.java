@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jms.guardiaoDoMarAPI.Model.ComunidadeUsuariosModel;
 import com.jms.guardiaoDoMarAPI.Service.ComunidadeUsuariosService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "guardiaodomar/comunidadeusuarios")
 public class ComunidadeUsuariosController {

@@ -13,6 +13,7 @@ import com.jms.guardiaoDoMarAPI.Model.UsuarioModel;
 import com.jms.guardiaoDoMarAPI.Response.ResponseModel;
 import com.jms.guardiaoDoMarAPI.Service.UsuarioService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "guardiaodomar/usuario")
 public class UsuarioController {
