@@ -3,12 +3,10 @@ package com.jms.guardiaoDoMarAPI.Service;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.jms.guardiaoDoMarAPI.Model.UsuarioModel;
 import com.jms.guardiaoDoMarAPI.Repository.UsuarioRepository;
 import com.jms.guardiaoDoMarAPI.Response.ResponseModel;
 
-import jakarta.transaction.Transactional;
 
 @Service
 public class UsuarioService {
@@ -44,7 +42,6 @@ public class UsuarioService {
 		else return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum telefone encontrado para o e-mail informado");
 	}
 	
-	@Transactional
 	public ResponseEntity<?> atualizarSenha(UsuarioModel usuarioUpdateSenha) {
 		usuarioRepository.novaSenha(usuarioUpdateSenha.getSenha(), usuarioUpdateSenha.getId());
 		return ResponseEntity.status(HttpStatus.OK).body("Senha atualizada!");
