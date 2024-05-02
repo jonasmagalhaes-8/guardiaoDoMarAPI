@@ -15,6 +15,7 @@ com\jms\guardiaoDoMarAPI\Model\UsuarioModel.class
 com\jms\guardiaoDoMarAPI\Controller\ComunidadeController.class
 com\jms\guardiaoDoMarAPI\Repository\ComunidadePostagensRepository.class
 com\jms\guardiaoDoMarAPI\Repository\ComunidadeUsuariosRepository.class
+com\jms\guardiaoDoMarAPI\Model\ResponseWebSocket.class
 com\jms\guardiaoDoMarAPI\Service\ComunidadeUsuariosService.class
 com\jms\guardiaoDoMarAPI\Model\IndicacaoLixoModel.class
 com\jms\guardiaoDoMarAPI\WebSocket\WebSocketConfig.class
