@@ -19,9 +19,7 @@ public class ComunidadeUsuariosService {
 		return ResponseEntity.ok("Usuario adicionado na comunidade com sucesso!");
 	}
 	
-	//post
-	
 	public void removerusuario(int idUsuario, int idComunidade) {	
-		comunidadeRepository.deleteAllByIdUsuarioAndIdComunidade(idUsuario, idComunidade);
+		comunidadeRepository.deleteByIdUsuarioAndIdComunidade(idUsuario, idComunidade);
 	}
 }

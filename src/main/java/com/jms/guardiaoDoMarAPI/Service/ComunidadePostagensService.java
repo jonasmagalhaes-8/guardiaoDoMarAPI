@@ -21,14 +21,14 @@ public class ComunidadePostagensService {
 	public ResponseEntity<?> novaPostagem(ComunidadePostagensModel novaPostagem) {	
 		novaPostagem.setDataCriacao(new Date());
 		return ResponseEntity.status(HttpStatus.CREATED).body(
-				new ResponseModel(comunidadePostagensRepository.save(novaPostagem).getId(), "Postagem realizada com sucesso!"));
+				new ResponseModel(new ComunidadePostagensModel(comunidadePostagensRepository.save(novaPostagem)), "Postagem realizada com sucesso!"));
 	}
 	
 	public void deletarPostagem(int idPostagem) {	
 		comunidadePostagensRepository.deleteById(idPostagem);
 	}
 	
-	public List<ComunidadePostagensModel> listarPostagensComunidade(int id) {
-		return comunidadePostagensRepository.findAllByIdComunidadeOrderByIdDesc(id);
+	public List<ComunidadePostagensModel> listarPostagensComunidade(int comunidadeId) {
+		return comunidadePostagensRepository.findAllByIdComunidadeOrderByIdDesc(comunidadeId);
 	}
 }

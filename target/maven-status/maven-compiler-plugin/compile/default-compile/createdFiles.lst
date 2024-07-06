@@ -3,13 +3,16 @@ com\jms\guardiaoDoMarAPI\Repository\ComunidadeRepository.class
 com\jms\guardiaoDoMarAPI\Model\ComunidadeUsuariosModel.class
 com\jms\guardiaoDoMarAPI\WebSocket\WebSocketHandler.class
 com\jms\guardiaoDoMarAPI\Model\ComunidadePostagensModel.class
+com\jms\guardiaoDoMarAPI\Repository\UsuarioRecuperacaoSenhaRepository.class
 com\jms\guardiaoDoMarAPI\Repository\IndicacaoLixoRepository.class
 com\jms\guardiaoDoMarAPI\Model\ComunidadeModel.class
 com\jms\guardiaoDoMarAPI\Response\ResponseModel.class
 com\jms\guardiaoDoMarAPI\guardiaoDoMarApplication.class
+com\jms\guardiaoDoMarAPI\config\GuardiaoDoMarConfiguration.class
 com\jms\guardiaoDoMarAPI\Controller\IndicacaoLixoController.class
 com\jms\guardiaoDoMarAPI\Controller\ComunidadeUsuariosController.class
 com\jms\guardiaoDoMarAPI\Response\GlobalExceptionHandler.class
+com\jms\guardiaoDoMarAPI\Model\UsuarioRecuperacaoSenhaModel.class
 com\jms\guardiaoDoMarAPI\Service\ComunidadeService.class
 com\jms\guardiaoDoMarAPI\Model\UsuarioModel.class
 com\jms\guardiaoDoMarAPI\Controller\ComunidadeController.class
@@ -19,8 +22,10 @@ com\jms\guardiaoDoMarAPI\Model\ResponseWebSocket.class
 com\jms\guardiaoDoMarAPI\Service\ComunidadeUsuariosService.class
 com\jms\guardiaoDoMarAPI\Model\IndicacaoLixoModel.class
 com\jms\guardiaoDoMarAPI\WebSocket\WebSocketConfig.class
+com\jms\guardiaoDoMarAPI\Service\EmailService.class
 com\jms\guardiaoDoMarAPI\Controller\UsuarioController.class
 com\jms\guardiaoDoMarAPI\Service\ComunidadePostagensService.class
 com\jms\guardiaoDoMarAPI\Controller\ComunidadePostagensController.class
 com\jms\guardiaoDoMarAPI\Repository\UsuarioRepository.class
+com\jms\guardiaoDoMarAPI\config\EmailConfiguration.class
 com\jms\guardiaoDoMarAPI\Service\UsuarioService.class

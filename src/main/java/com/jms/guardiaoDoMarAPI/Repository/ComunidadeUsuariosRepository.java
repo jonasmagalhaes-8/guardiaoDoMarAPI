@@ -8,5 +8,5 @@ import com.jms.guardiaoDoMarAPI.Model.ComunidadeUsuariosModel;
 @Repository
 @Transactional
 public interface ComunidadeUsuariosRepository extends JpaRepository<ComunidadeUsuariosModel, Integer> {
-	void deleteAllByIdUsuarioAndIdComunidade(int usuarioId, int comunidadeId);
+	void deleteByIdUsuarioAndIdComunidade(int usuarioId, int comunidadeId);
 }

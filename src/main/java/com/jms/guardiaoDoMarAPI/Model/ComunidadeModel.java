@@ -3,6 +3,7 @@ package com.jms.guardiaoDoMarAPI.Model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -52,23 +54,19 @@ public class ComunidadeModel implements Serializable {
 	@Transient
 	private List<ComunidadePostagensModel> postagens;
 	
+	@Transient 
+	@JsonInclude(Include.NON_DEFAULT)
+	private boolean membroAdministrador;
+	
 	public ComunidadeModel() {
 		
 	}
-					
-	public ComunidadeModel(Integer id, String nome, String cidade, String estado, Long quantidadeMembros, Date ultimaPostagem) {
-		this.id = id;
-		this.nome = nome;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.quantidadeMembros = quantidadeMembros;
-		this.ultimaPostagem = ultimaPostagem;
-	}
-		
-	public ComunidadeModel(String contatoAdministrador, String descricao, Date dataCriacao) {
+							
+	public ComunidadeModel(String contatoAdministrador, String descricao, Date dataCriacao, boolean membroAdministrador) {
 		this.contatoAdministrador = contatoAdministrador;
 		this.descricao = descricao;
 		this.dataCriacao = dataCriacao;
+		this.membroAdministrador = membroAdministrador;
 	}
 
 	public ComunidadeModel(Integer id) {
@@ -161,5 +159,13 @@ public class ComunidadeModel implements Serializable {
 
 	public void setPostagens(List<ComunidadePostagensModel> postagens) {
 		this.postagens = postagens;
+	}
+
+	public boolean isMembroAdministrador() {
+		return membroAdministrador;
+	}
+
+	public void setMembroAdministrador(boolean membroAdministrador) {
+		this.membroAdministrador = membroAdministrador;
 	}	
 }

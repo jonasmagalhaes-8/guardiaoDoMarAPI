@@ -35,6 +35,14 @@ public class ComunidadePostagensModel implements Serializable {
 		
 	@JsonFormat(timezone="America/Sao_Paulo")
 	private Date dataCriacao;
+	
+	public ComunidadePostagensModel() {
+	}
+
+	public ComunidadePostagensModel(ComunidadePostagensModel postagemCriada) {
+		this.id = postagemCriada.id;
+		this.dataCriacao = postagemCriada.dataCriacao;
+	}
 
 	public Integer getId() {
 		return id;

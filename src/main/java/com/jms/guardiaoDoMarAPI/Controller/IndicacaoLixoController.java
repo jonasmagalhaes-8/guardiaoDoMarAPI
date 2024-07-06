@@ -3,7 +3,6 @@ package com.jms.guardiaoDoMarAPI.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +13,6 @@ import com.jms.guardiaoDoMarAPI.Response.ResponseModel;
 import com.jms.guardiaoDoMarAPI.Service.IndicacaoLixoService;
 
 @RestController
-@CrossOrigin
 @RequestMapping(value = "guardiaodomar/indicacaolixo")
 public class IndicacaoLixoController {
 	

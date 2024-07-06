@@ -1,8 +1,6 @@
 package com.jms.guardiaoDoMarAPI.Controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,7 +12,6 @@ import com.jms.guardiaoDoMarAPI.Response.ResponseModel;
 import com.jms.guardiaoDoMarAPI.Service.UsuarioService;
 
 @RestController
-@CrossOrigin
 @RequestMapping(value = "guardiaodomar/usuario")
 public class UsuarioController {
 	
@@ -39,8 +36,13 @@ public class UsuarioController {
 		return service.atualizarSenha(UsuarioResetSenha);
 	}
 	
-	@GetMapping(value = "/recuperarsenha/{email}")
-	public ResponseEntity<?> recuperacaoSenha (@PathVariable String email) {
-		return service.recuperacaoSenha(email);
+	@PostMapping(value = "/recuperarsenha/{email}")
+	public ResponseEntity<?> recuperacaoSenha(@PathVariable String email) {
+		return service.solicitacaoRecuperacaoSenha(email);
+	}
+	
+	@PostMapping(value = "/validartoken/{token}")
+	public ResponseEntity<?> validarTokenEnviadoRecuperacaoSenha (@PathVariable int token) {
+		return service.validarTokenEnviadoRecuperacaoSenha(token);
 	}
 }

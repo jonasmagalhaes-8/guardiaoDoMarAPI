@@ -2,11 +2,11 @@ package com.jms.guardiaoDoMarAPI.Service;
 
 import java.util.Date;
 import java.util.List;
-
+import java.util.Map;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.jms.guardiaoDoMarAPI.Model.ComunidadeModel;
 import com.jms.guardiaoDoMarAPI.Model.ComunidadeUsuariosModel;
 import com.jms.guardiaoDoMarAPI.Repository.ComunidadeRepository;
@@ -28,7 +28,16 @@ public class ComunidadeService {
 		this.comunidadePostagensService = comunidadePostagensService;
 	}
 
-	//atualizarComunidade
+	public ResponseEntity<?> atualizarComunidade(ComunidadeModel comunidadeAtualizada) {
+		
+		ComunidadeModel comunidadeASerAtualizada = repository.findById(comunidadeAtualizada.getId()).get();
+		
+		BeanUtils.copyProperties(comunidadeAtualizada, comunidadeASerAtualizada, "id", "usuarioCriador", "dataCriacao");
+			
+		repository.save(comunidadeASerAtualizada);
+				
+		return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseModel("Comunidade atualizada com sucesso!"));
+	}
 	
 	public ResponseEntity<?> cadastro(ComunidadeModel novaComunidade) {
 		
@@ -43,19 +52,19 @@ public class ComunidadeService {
 		return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseModel("Comunidade criada com sucesso!"));
 	}
 	
-	public List<ComunidadeModel> listarPorUsuario(int id) {
+	public List<Map<String, Object>> listarPorUsuario(int id) {
 		return repository.listarComunidadesPorUsuario(id);
 	}
 	
-	public List<ComunidadeModel> listarTodas() {
-		return repository.listarTodasComunidades();
+	public List<Map<String, Object>> listarTodas(int usuarioId) {
+		return repository.listarTodasComunidades(usuarioId);
 	}
 	
-	public ComunidadeModel detalhar(int id) {	
+	public ComunidadeModel detalhar(int comunidadeId, int usuarioId) {	
 		
-		ComunidadeModel comunidade = repository.detalhesComunidade(id);
+		ComunidadeModel comunidade = repository.detalhesComunidade(comunidadeId, usuarioId);
 		
-		comunidade.setPostagens(comunidadePostagensService.listarPostagensComunidade(id));
+		comunidade.setPostagens(comunidadePostagensService.listarPostagensComunidade(comunidadeId));
 		
 		return comunidade;
 	}
