@@ -17,14 +17,14 @@ public class ComunidadeService {
 	
 	private final ComunidadeRepository repository;
 	
-	private final ComunidadeUsuariosService usuariosService;
+	private final ComunidadeUsuariosService comunidadeUsuariosService;
 	
 	private final ComunidadePostagensService comunidadePostagensService;
 				
 	public ComunidadeService(ComunidadeRepository comunidadeRepository,
 			ComunidadeUsuariosService comunidadeUsuariosService, ComunidadePostagensService comunidadePostagensService) {
 		this.repository = comunidadeRepository;
-		this.usuariosService = comunidadeUsuariosService;
+		this.comunidadeUsuariosService = comunidadeUsuariosService;
 		this.comunidadePostagensService = comunidadePostagensService;
 	}
 
@@ -47,7 +47,7 @@ public class ComunidadeService {
 		
 		ComunidadeUsuariosModel novoUsuarioComunidade = new ComunidadeUsuariosModel(novaComunidade.getUsuarioCriador(), idComunidadeCriada, true);
 		
-		usuariosService.cadastraUsuarioComunidade(novoUsuarioComunidade);
+		comunidadeUsuariosService.cadastraUsuarioComunidade(novoUsuarioComunidade);
 						
 		return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseModel("Comunidade criada com sucesso!"));
 	}

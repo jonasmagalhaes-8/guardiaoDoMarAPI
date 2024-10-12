@@ -18,7 +18,7 @@ public class ComunidadePostagensService {
 	    this.comunidadePostagensRepository = comunidadePostagensRepository;
 	}
 			
-	public ResponseEntity<?> novaPostagem(ComunidadePostagensModel novaPostagem) {	
+	public ResponseEntity<ResponseModel> novaPostagem(ComunidadePostagensModel novaPostagem) {	
 		novaPostagem.setDataCriacao(new Date());
 		return ResponseEntity.status(HttpStatus.CREATED).body(
 				new ResponseModel(new ComunidadePostagensModel(comunidadePostagensRepository.save(novaPostagem)), "Postagem realizada com sucesso!"));

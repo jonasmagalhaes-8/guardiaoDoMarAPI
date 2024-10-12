@@ -23,8 +23,5 @@ public interface UsuarioRepository extends JpaRepository<UsuarioModel, Integer> 
 		
 	@Modifying
 	@Query(value = "UPDATE public.tb_usuario SET senha = :novaSenha WHERE id = :id", nativeQuery = true)
-	int novaSenha(String novaSenha, Integer id);
-	
-	@Query(value = "SELECT new UsuarioModel(u.id, u.telefone) FROM UsuarioModel u where email = :email")
-	UsuarioModel getTelefoneRecuperacaoSenha(String email);
+	void novaSenha(String novaSenha, Integer id);
 }

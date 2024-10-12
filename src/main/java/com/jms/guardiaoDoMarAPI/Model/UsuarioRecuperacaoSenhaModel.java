@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "tb_usuario_recuperacao_senha")
 public class UsuarioRecuperacaoSenhaModel implements Serializable {
 
-	private static final long serialVersionUID = 4868917757742170290L;
+	private static final long serialVersionUID = 1513294544688310203L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuariorecuperacaosenha_generator")

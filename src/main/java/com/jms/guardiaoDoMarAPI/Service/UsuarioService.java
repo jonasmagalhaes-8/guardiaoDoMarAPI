@@ -46,10 +46,21 @@ public class UsuarioService {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseModel("E-mail informado não encontrado!"));
 	}
 		
+	public ResponseEntity<?> solicitacaoRecuperacaoSenha(String email) {
+		UsuarioModel existeUsuarioEmail = usuarioRepository.recuperaIdPorEmail(email);
+		if(existeUsuarioEmail!=null) {
+			int tokenRecuperacaoSenha = geraTokenRecuperacaoSenha();
+			usuarioRecuperacaoSenhaRepository.save(new UsuarioRecuperacaoSenhaModel(new Date(), tokenRecuperacaoSenha, existeUsuarioEmail.getId()));
+			emailService.enviarEmailRecuperacaoDeSenha(email, tokenRecuperacaoSenha);
+			return ResponseEntity.status(HttpStatus.OK).body("Te enviaremos um e-mail para que possa criar uma nova senha, fique atento a sua caixa de entrada!");
+		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("E-mail informado não cadastrado para nenhuma conta!");
+	}
+	
 	int geraTokenRecuperacaoSenha() {
 		return 100000 + new Random().nextInt(900000);
 	}
-	
+		
 	public ResponseEntity<?> validarTokenEnviadoRecuperacaoSenha(int token) {
 		UsuarioRecuperacaoSenhaModel existeSolicitacao = usuarioRecuperacaoSenhaRepository.findByToken(token);
 		if(existeSolicitacao!=null) {
@@ -62,17 +73,6 @@ public class UsuarioService {
 			return ResponseEntity.status(HttpStatus.OK).body(new ResponseModel(existeSolicitacao.getIdUsuario(), "Código validado com sucesso!"));
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Token informado inválido! Tente novamente"); 
-	}
-	
-	public ResponseEntity<?> solicitacaoRecuperacaoSenha(String email) {
-		UsuarioModel existeUsuarioEmail = usuarioRepository.recuperaIdPorEmail(email);
-		if(existeUsuarioEmail!=null) {
-			int tokenRecuperacaoSenha = geraTokenRecuperacaoSenha();
-			usuarioRecuperacaoSenhaRepository.save(new UsuarioRecuperacaoSenhaModel(new Date(), tokenRecuperacaoSenha, existeUsuarioEmail.getId()));
-			emailService.enviarEmailRecuperacaoDeSenha(email, tokenRecuperacaoSenha);
-			return ResponseEntity.status(HttpStatus.OK).body("Te enviaremos um e-mail para que possa criar uma nova senha, fique atento a sua caixa de entrada!");
-		}
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("E-mail informado não cadastradp para nenhuma conta!");
 	}
 	
 	public ResponseEntity<?> atualizarSenha(UsuarioModel usuarioUpdateSenha) {

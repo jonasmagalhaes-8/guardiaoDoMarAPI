@@ -23,7 +23,7 @@ public class IndicacaoLixoController {
 	}
 				
 	@PostMapping("/nova")
-	public ResponseEntity<ResponseModel> cadastrocomunidadeusuarios(@RequestBody IndicacaoLixoModel novaIndicacao) {
+	public ResponseEntity<ResponseModel> cadastroComunidadeUsuarios(@RequestBody IndicacaoLixoModel novaIndicacao) {
 		return service.novaIndicacao(novaIndicacao);
 	}
 	
